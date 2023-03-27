@@ -20,11 +20,8 @@ export default class Messages {
     email.textContent = message.from;
     const subject = document.createElement('span');
     subject.className = 'subject';
-    if (message.subject.length > 15) {
-      subject.textContent = `${message.subject.slice(0, 15)}...`;
-    } else {
-      subject.textContent = message.subject;
-    }
+    const messageLimit = 15;
+    subject.textContent = message.subject.length > messageLimit ? `${message.subject.slice(0, messageLimit)}...` : message.subject;
     const date = document.createElement('span');
     date.className = 'date';
     const dateValue = new Date(message.received);

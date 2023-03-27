@@ -1,6 +1,6 @@
-import { of, interval } from 'rxjs';
+import { of, interval, map } from 'rxjs';
 import {
-  catchError, pluck, mergeMap, take,
+  catchError, mergeMap, take,
 } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import Messages from './Messages';
@@ -20,6 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return of(null);
           }),
         )),
-      pluck('messages'),
+      map((data) => data.messages),
     ).subscribe(messages.add);
 });
